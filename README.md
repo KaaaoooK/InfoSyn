@@ -1,6 +1,6 @@
 web 1
 
-1. Проводим осмотр веб-приложения. И находим ссылку: ![Screenshot_2024-03-21_11_49_29](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/89ffc2c9-6dab-4ca0-b43c-ac2a543a2b67) Перейдя по ней видим подсказку, что файл с флагом может находиться в директории etc/secret: ![Screenshot_2024-03-21_11_50_45](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/1dcf0c00-b9c7-4a70-8cfc-b424bb8773f1)
+1. Проводим осмотр веб-приложения. И находим ссылку: ![Screenshot_2024-03-21_11_49_29](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/89ffc2c9-6dab-4ca0-b43c-ac2a543a2b67) Перейдя по ней, видим подсказку, что файл с флагом может находиться в директории etc/secret: ![Screenshot_2024-03-21_11_50_45](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/1dcf0c00-b9c7-4a70-8cfc-b424bb8773f1)
 
 2. Чтобы скачать необходимый файл с сервера, воспользуемся уязвимостью "file inclusion". Введем в адресную строку: http://192.168.12.10:5001/download?file_type=/../../../../../../etc/secret. Скачивается нужный файл: ![Screenshot_2024-03-21_11_54_12](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/272ec935-ed57-40d3-9ebd-f3f918f99443)
 В нем находится флаг: ![Screenshot_2024-03-21_11_55_59](https://github.com/KaaaoooK/KaaaoooK/assets/164244108/40f75ce4-6e24-4d2c-989d-bb41cd7e3b82)
